@@ -30,7 +30,6 @@ public class IPv4 {
 
     private int[] parseMask() {
         int[] fullMask = new int[]{255, 255, 255, 255};
-
         for (int i = fullMask.length - 1; i >= 0; i--) {
             if (i == changeableOctet) {
                 fullMask[i] = 256 - offset;
