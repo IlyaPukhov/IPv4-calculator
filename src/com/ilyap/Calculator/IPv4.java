@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class IPv4 {
-    private final int[] IPAddress;
+    private final int[] IPArray;
     private final int[] mask;
     private final int hosts;
     private final int[] networkAddress;
@@ -16,8 +16,8 @@ public class IPv4 {
     private final int offset;
 
     public IPv4(String IPAddress) {
-        this.IPAddress = parseIP(IPAddress);
-        int prefixMask = this.IPAddress[4];
+        this.IPArray = parseIP(IPAddress);
+        int prefixMask = IPArray[4];
         this.changeableOctet = 3 - (32 - prefixMask) / 8;
         this.offset = (int) Math.pow(2, (32 - prefixMask) % 8);
 
@@ -42,8 +42,8 @@ public class IPv4 {
     }
 
     private int[] calcNetworkAddress() {
-        int[] network = Arrays.copyOf(IPAddress, 4);
-        int subnetNum = IPAddress[changeableOctet] / offset;
+        int[] network = Arrays.copyOf(IPArray, 4);
+        int subnetNum = IPArray[changeableOctet] / offset;
         int subnetOctet = subnetNum * offset;
         for (int i = network.length - 1; i >= 0; i--) {
             if (i == changeableOctet) {
@@ -68,7 +68,7 @@ public class IPv4 {
     }
 
     private NetworkClass calcNetworkClass() {
-        int firstOctet = IPAddress[0];
+        int firstOctet = IPArray[0];
         NetworkClass netClass = NetworkClass.E;
         if (firstOctet < 128) netClass = NetworkClass.A;
         else if (firstOctet < 192) netClass = NetworkClass.B;
