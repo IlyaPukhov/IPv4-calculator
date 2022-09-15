@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 public class IPv4 {
     private final int[] IPArray;
     private final int[] mask;
-    private final int hosts;
+    private final long hosts;
     private final int[] networkAddress;
     private final int[] broadcastAddress;
     private final NetworkClass networkClass;
@@ -21,7 +21,7 @@ public class IPv4 {
         this.changeableOctet = 3 - (32 - prefixMask) / 8;
         this.offset = (int) Math.pow(2, (32 - prefixMask) % 8);
 
-        this.hosts = (int) Math.pow(2, (32 - prefixMask));
+        this.hosts = (long) Math.pow(2, (32 - prefixMask));
         this.mask = parseMask();
         this.networkAddress = calcNetworkAddress();
         this.broadcastAddress = calcBroadcastAddress();
@@ -42,14 +42,16 @@ public class IPv4 {
 
     private int[] calcNetworkAddress() {
         int[] network = Arrays.copyOf(IPArray, 4);
-        int subnetNum = IPArray[changeableOctet] / offset;
-        int subnetOctet = subnetNum * offset;
-        for (int i = network.length - 1; i >= 0; i--) {
-            if (i == changeableOctet) {
-                network[i] = subnetOctet;
-                break;
+        if (changeableOctet >= 0) {
+            int subnetNum = IPArray[changeableOctet] / offset;
+            int subnetOctet = subnetNum * offset;
+            for (int i = network.length - 1; i >= 0; i--) {
+                if (i == changeableOctet) {
+                    network[i] = subnetOctet;
+                    break;
+                }
+                network[i] = 0;
             }
-            network[i] = 0;
         }
         return network;
     }
@@ -81,7 +83,7 @@ public class IPv4 {
         return convertToString(mask);
     }
 
-    public int getHosts() {
+    public long getHosts() {
         return hosts;
     }
 
