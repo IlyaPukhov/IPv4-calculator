@@ -116,7 +116,7 @@ public class IPv4 {
                 + mask;
 
         if (Pattern.matches(regex, address)) {
-            String[] ipa = address.split("[./]");
+            String[] ipa = address.trim().split("[./]");
             return Arrays.stream(ipa)
                     .mapToInt(Integer::parseInt)
                     .toArray();
