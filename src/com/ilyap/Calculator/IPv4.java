@@ -83,8 +83,8 @@ public class IPv4 {
         return convertToString(mask);
     }
 
-    public long getHosts() {
-        return hosts;
+    public String getHosts() {
+        return String.valueOf(hosts);
     }
 
     public String getNetworkAddress() {
@@ -95,8 +95,8 @@ public class IPv4 {
         return convertToString(broadcastAddress);
     }
 
-    public NetworkClass getNetworkClass() {
-        return networkClass;
+    public String getNetworkClass() {
+        return String.valueOf(networkClass);
     }
 
     private String convertToString(int[] arr) {
@@ -121,7 +121,7 @@ public class IPv4 {
                     .mapToInt(Integer::parseInt)
                     .toArray();
         } else {
-            throw new RuntimeException("IPv4 is not valid!");
+            throw new RuntimeException("Некорректный адрес!");
         }
     }
 }

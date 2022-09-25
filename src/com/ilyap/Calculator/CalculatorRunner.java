@@ -1,17 +1,28 @@
 package com.ilyap.Calculator;
 
-import java.util.Scanner;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 
-public class CalculatorRunner {
+import java.io.IOException;
+import java.util.Objects;
+
+public class CalculatorRunner extends Application {
+    @Override
+    public void start(Stage primaryStage) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/calc.fxml")));
+        primaryStage.getIcons().add(
+                new Image(Objects.requireNonNull(getClass().getResourceAsStream("assets/icon.png"))));
+        primaryStage.setTitle("IPv4 Калькулятор");
+        primaryStage.setScene(new Scene(root));
+        primaryStage.setResizable(false);
+        primaryStage.show();
+    }
+
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Введите IPv4 адрес:      ");
-        String ipAddr = scanner.next();
-        IPv4 ipv4 = new IPv4(ipAddr);
-        System.out.println("Маска подсети:           " + ipv4.getMask());
-        System.out.println("Количество хостов:       " + ipv4.getHosts());
-        System.out.println("Адрес сети:              " + ipv4.getNetworkAddress());
-        System.out.println("Широковещательный адрес: " + ipv4.getBroadcastAddress());
-        System.out.println("Класс подсети:           " + ipv4.getNetworkClass());
+        launch(args);
     }
 }
