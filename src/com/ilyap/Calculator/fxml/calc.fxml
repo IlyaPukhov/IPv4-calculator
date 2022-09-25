@@ -11,7 +11,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="760.0" style="-fx-background-color: #ffffff;" stylesheets="@../styles/main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ilyap.Calculator.CalculatorController">
    <ImageView fitHeight="580.0" fitWidth="760.0" opacity="0.8" pickOnBounds="true">
-      <Image url="@../assets/background.jpg" />
+      <Image url="@../assets/background.png" />
    </ImageView>
    <TextField fx:id="ipv4AddressField" focusTraversable="false" layoutX="434.0" layoutY="56.0" prefHeight="41.0" prefWidth="290.0" promptText="10.76.52.9/23" styleClass="field" AnchorPane.bottomAnchor="471.2">
       <font>
