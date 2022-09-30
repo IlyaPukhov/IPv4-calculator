@@ -1,4 +1,4 @@
-package com.ilyap.Calculator;
+package com.ilyap.calculator;
 
 import java.util.Arrays;
 import java.util.regex.Pattern;

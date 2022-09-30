@@ -1,4 +1,4 @@
-package com.ilyap.Calculator;
+package com.ilyap.calculator;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

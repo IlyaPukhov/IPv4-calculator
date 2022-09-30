@@ -1,4 +1,4 @@
-package com.ilyap.Calculator;
+package com.ilyap.calculator;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
